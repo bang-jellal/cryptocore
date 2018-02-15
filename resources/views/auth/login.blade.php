@@ -1,21 +1,23 @@
-@extends('layouts.app_auth')
+@extends('layouts.auth.app')
 
 @section('content')
     <p class="login-box-msg">Sign in to start your session</p>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
-        <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+        <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
             <input type="email" id="email" class="form-control"
                    placeholder="E-Mail Address" name="email" value="{{ old('email') }}">
-            @if ($errors->has('email'))
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        @if ($errors->has('email'))
                 <span class="help-block">{{ $errors->first('email') }}</span>
             @endif
         </div>
-        <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+        <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
             <input type="password" id="password" class="form-control"
                    placeholder="Password" name="password" value="{{ old('password') }}">
-            @if ($errors->has('password'))
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        @if ($errors->has('password'))
                 <span class="help-block">{{ $errors->first('password') }}</span>
             @endif
         </div>

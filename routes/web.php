@@ -11,10 +11,24 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function() {
+    // Role User
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    // Role Admin
+    Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'role:Admin'], function() {
+        Route::get('/', 'DashboardController@index')->name('dashboard.index');
+        Route::resource('/role', 'RoleController');
+        Route::resource('/user', 'UserController');
+    });
+
+});

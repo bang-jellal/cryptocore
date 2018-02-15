@@ -1,4 +1,4 @@
-@extends('layouts.app_auth')
+@extends('layouts.auth.app')
 @section('content')
     <p class="login-box-msg">Register a new membership</p>
     <form method="POST" action="{{ route('register') }}">
