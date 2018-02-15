@@ -14,13 +14,6 @@
                 </a>
             </li>
 
-            {{-- Management Role --}}
-            <li class="{{ active('admin.role.*') }}">
-                <a href="{{ route('admin.role.index') }}">
-                    <i class="fa fa-gear"></i> <span>Management Role</span>
-                </a>
-            </li>
-
             {{-- Management User --}}
             <li class="{{ active('admin.user.*') }}">
                 <a href="{{ route('admin.user.index') }}">

@@ -152,6 +152,7 @@ return [
          * Package Service Providers...
          */
         Watson\Active\ActiveServiceProvider::class, // https://github.com/dwightwatson/active
+        Yajra\DataTables\DataTablesServiceProvider::class, // https://github.com/yajra/laravel-datatables
 
         /*
          * Application Service Providers...
@@ -211,6 +212,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Active' => Watson\Active\Facades\Active::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 

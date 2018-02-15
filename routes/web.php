@@ -27,8 +27,10 @@ Route::group(['middleware' => 'auth'], function() {
     // Role Admin
     Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'role:Admin'], function() {
         Route::get('/', 'DashboardController@index')->name('dashboard.index');
-        Route::resource('/role', 'RoleController');
         Route::resource('/user', 'UserController');
+
+        // DataTable
+        Route::get('/data-table/user', 'DataTableController@user')->name('data_table.user');
     });
 
 });

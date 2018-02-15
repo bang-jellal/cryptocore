@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ asset('/template/adminlte/bower_components/font-awesome/css/font-awesome.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ asset('/template/adminlte/bower_components/Ionicons/css/ionicons.min.css') }}">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('/template/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
     <!-- jvectormap -->
     <link rel="stylesheet" href="{{ asset('/template/adminlte/bower_components/jvectormap/jquery-jvectormap.css') }}">
     <!-- Theme style -->
@@ -59,22 +61,18 @@
 <script src="{{ asset('/template/adminlte/bower_components/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('/template/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- DataTables -->
+<script src="{{ asset('/template/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/template/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+<!-- SlimScroll -->
+<script src="{{ asset('/template/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
 <script src="{{ asset('/template/adminlte/bower_components/fastclick/lib/fastclick.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('/template/adminlte/dist/js/adminlte.min.js') }}"></script>
-<!-- Sparkline -->
-<script src="{{ asset('/template/adminlte/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js') }}"></script>
-<!-- jvectormap  -->
-<script src="{{ asset('/template/adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-<script src="{{ asset('/template/adminlte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-<!-- SlimScroll -->
-<script src="{{ asset('/template/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-<!-- ChartJS -->
-<script src="{{ asset('/template/adminlte/bower_components/chart.js/Chart.js') }}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('/template/adminlte/dist/js/pages/dashboard2.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('/template/adminlte/dist/js/demo.js') }}"></script>
+<!-- App scripts -->
+@stack('scripts')
 </body>
 </html>
