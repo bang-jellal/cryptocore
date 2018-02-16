@@ -19,6 +19,25 @@ if (! function_exists('button_data_table')) {
     }
 }
 
+if (! function_exists('button_data_table_sub')) {
+    function button_data_table_sub($sub_data, $data, $url)
+    {
+        $show    = '<form action="'.route($url.'.destroy', [$sub_data, $data]).'" method="POST">
+                    <a href="'.route($url.'.show', [$sub_data, $data]).'" class="btn btn-xs btn-info">
+                    <i class="glyphicon glyphicon-eye-open"></i> Show</a>';
+        $edit    = '<a href="'.route($url.'.edit', [$sub_data, $data]).'" class="btn btn-xs btn-primary">
+                    <i class="glyphicon glyphicon-edit"></i> Edit</a>';
+        $delete  = ''. method_field('DELETE'). csrf_field().'
+                    <button type="submit" class="btn btn-xs btn-danger" 
+                    onclick="return confirm(\'Are you sure you want to delete this item?\');">
+                    <i class="glyphicon glyphicon-trash"></i> Delete</button></form>';
+
+        $buttons = $show.'&ensp;'.$edit.'&ensp;'.$delete;
+
+        return $buttons;
+    }
+}
+
 if (! function_exists('user_data_table_role')) {
     function user_data_table_role($data)
     {

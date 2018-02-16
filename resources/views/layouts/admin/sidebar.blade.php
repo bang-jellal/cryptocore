@@ -15,7 +15,7 @@
             </li>
 
             {{-- Management Category --}}
-            <li class="{{ active('admin.category.*') }}">
+            <li class="{{ active(['admin.category.*', 'admin.sub_category.*']) }}">
                 <a href="{{ route('admin.category.index') }}">
                     <i class="fa fa-list-ul"></i> <span>Management Category</span>
                 </a>

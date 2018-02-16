@@ -16,6 +16,10 @@ class CreateTableForeignKeys extends Migration
         Schema::table('user_profiles', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
         });
+
+        Schema::table('sub_categories', function (Blueprint $table) {
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('CASCADE');
+        });
     }
 
     /**

@@ -57,7 +57,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('admin.category.show', compact('category'));
+        return redirect()->route('admin.sub_category.index', $category);
     }
 
     /**

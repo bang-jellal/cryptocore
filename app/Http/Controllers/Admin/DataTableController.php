@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
+use App\Models\SubCategory;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 
@@ -33,6 +34,19 @@ class DataTableController extends Controller
             ->addColumn('action',
                 function ($categories) {
                     return button_data_table($categories, 'admin.category');
+                })
+            ->toJson();
+
+        return $data_table;
+    }
+
+    public function subCategory(Category $category)
+    {
+        $sub_categories = $category->subCategory()->get();
+        $data_table     = datatables($sub_categories)
+            ->addColumn('action',
+                function ($sub_categories) use ($category) {
+                    return button_data_table_sub($category, $sub_categories, 'admin.sub_category');
                 })
             ->toJson();
 
