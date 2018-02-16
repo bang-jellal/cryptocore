@@ -12,10 +12,15 @@ class DataTableController extends Controller
     {
         $users = User::all();
         $data_table = datatables($users)
+            ->addColumn('role',
+                function ($users) {
+                    return user_data_table_role($users);
+                })
             ->addColumn('action',
                 function ($users) {
                     return button_data_table($users, 'admin.user');
                 })
+            ->rawColumns(['role', 'action'])
             ->toJson();
 
         return $data_table;
