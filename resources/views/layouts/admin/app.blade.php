@@ -61,13 +61,17 @@
 <script src="{{ asset('/template/adminlte/bower_components/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('/template/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-<!-- DataTables -->
-<script src="{{ asset('/template/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('/template/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 <!-- SlimScroll -->
 <script src="{{ asset('/template/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
 <script src="{{ asset('/template/adminlte/bower_components/fastclick/lib/fastclick.js') }}"></script>
+<!-- Sparkline -->
+<script src="{{ asset('/template/adminlte/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js') }}"></script>
+<!-- jvectormap  -->
+<script src="{{ asset('/template/adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+<script src="{{ asset('/template/adminlte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+<!-- SlimScroll -->
+<script src="{{ asset('/template/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('/template/adminlte/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->

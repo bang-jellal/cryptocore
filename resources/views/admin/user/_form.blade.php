@@ -36,50 +36,58 @@
     <div class="col-md-2"></div>
 </div>
 
-<div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <label>
+@if(request()->route('admin.user.create'))
+    <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <label>
+                @if ($errors->has('password'))
+                    <i class="fa fa-times-circle-o"></i>
+                @endif
+                Password
+            </label>
+            <input type="password" class="form-control" placeholder="Password" id="password" name="password" autofocus>
             @if ($errors->has('password'))
-                <i class="fa fa-times-circle-o"></i>
+                <span class="help-block">{{ $errors->first('password') }}</span>
             @endif
-            Password
-        </label>
-        <input type="password" class="form-control" placeholder="Password" id="password" name="password" autofocus>
-        @if ($errors->has('password'))
-            <span class="help-block">{{ $errors->first('password') }}</span>
-        @endif
+        </div>
+        <div class="col-md-2"></div>
     </div>
-    <div class="col-md-2"></div>
-</div>
 
-<div class="form-group {{ $errors->has('role') ? ' has-error' : '' }}">
+    <div class="form-group {{ $errors->has('role') ? ' has-error' : '' }}">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <label>
+                Retype password
+            </label>
+            <input type="password" class="form-control" placeholder="Retype password" id="password-confirm"
+                   name="password_confirmation">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+@endif
+
+<div class="form-group {{ $errors->has('role_id') || $errors->has('role_id.*') ? ' has-error' : '' }}">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-        <label>
-            Retype password
-        </label>
-        <input type="password" class="form-control" placeholder="Retype password" id="password-confirm"
-               name="password_confirmation">
-    </div>
-    <div class="col-md-2"></div>
-</div>
+        <label> @if ($errors->has('role_id') || $errors->has('role_id.*')) <i class="fa fa-times-circle-o"></i> @endif User Role</label>
+        @foreach($roles as $key => $role)
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="role_id[]" value="{{ $key }}"
+                            @if (!empty($user_roles)) {{ in_array($key, $user_roles, true) ? 'checked' : '' }} @endif
+                            {{ (old('role_id') === $key ? 'checked' : '') }}>
+                    {{ $role }}
+                </label>
+            </div>
+        @endforeach
 
-<div class="form-group {{ $errors->has('role_id') ? ' has-error' : '' }}">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <label> @if ($errors->has('role_id'))<i class="fa fa-times-circle-o"></i>@endif User Role</label>
-        <select name="role_id" class="form-control">
-            <option>-- Select Role --</option>
-            @foreach($roles as $key => $role)
-                <option value="{{ $role }}"
-                        {{ !empty($user->role) ? $user->role == $key ? 'selected' : '' : ''}}
-                        {{ (old("role_id") == $role ? "selected" : "") }}>{{ $role }}</option>
-            @endforeach
-        </select>
         @if ($errors->has('role_id'))
             <span class="help-block">{{ $errors->first('role_id') }}</span>
+        @elseif($errors->has('role_id.*'))
+            <span class="help-block">{{ $errors->first('role_id.*') }}</span>
         @endif
+
     </div>
     <div class="col-md-2"></div>
 </div>

@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-
-class UserUpdateRequest extends FormRequest
+class UserUpdateRequest extends UserStoreRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +11,12 @@ class UserUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        if ($this->route('user') === null) {
+            abort(404);
+        }
+
+        return true;
+
     }
 
     /**
@@ -24,7 +27,15 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'      => 'required|string|max:255',
+            'email'     => 'required|email|unique:users,email,'.$this->route('user')->id,
+            'role_id'   => 'required',
+            'role_id.*' => 'required|exists:roles,id',
+            'custom' => [
+                'role_id.*' => [
+                    'exists' => 'Each person must have a unique e-mail address',
+                ]
+            ],
         ];
     }
 }

@@ -43,12 +43,13 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        $profile = new UserProfile();
-        $user    = new User();
+        $user = new User();
         $user->fill($request->except(['_token', 'role_id']));
         $user->save();
+
+        $profile = new UserProfile();
         $user->profile()->save($profile);
-        $user->assignRole($request->get('role_id'));
+        $user->roles()->sync($request->input('role_id', []));
 
         return redirect()->route('admin.user.index')->with('alert', [
             'alert'   => 'success',
@@ -76,7 +77,10 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.user.edit', compact('user'));
+        $roles = Role::pluck('name', 'id');
+        $user_roles = $user->roles->pluck('id')->toArray();
+
+        return view('admin.user.edit', compact('user', 'roles', 'user_roles'));
     }
 
     /**
@@ -89,7 +93,8 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, User $user)
     {
-        $user->fill($request->except('_token', '_method'));
+        $user->fill($request->except('_token', '_method', 'role_id'));
+        $user->roles()->sync($request->input('role_id', []));
         $user->save();
 
         return redirect()->route('admin.user.index')->with('alert', [
@@ -107,8 +112,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $role = User::findOrFail($id);
-        $role->delete();
+        $user = User::findOrFail($id);
+        $user->profile()->delete();
+        $user->roles()->delete();
+        $user->delete();
 
         return redirect()->route('admin.user.index')->with('alert', [
             'alert'   => 'success',

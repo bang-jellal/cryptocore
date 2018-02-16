@@ -826,3 +826,10 @@
         </div>
     </section>
 @endsection
+
+@push('script')
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{{ asset('/template/adminlte/dist/js/pages/dashboard2.js') }}"></script>
+    <!-- ChartJS -->
+    <script src="{{ asset('/template/adminlte/bower_components/chart.js/Chart.js') }}"></script>
+@endpush

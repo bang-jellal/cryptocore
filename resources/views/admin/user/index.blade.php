@@ -13,16 +13,16 @@
     </section>
 
     @if (session('alert'))
-    <div class="pad margin no-print">
-        <div class="callout callout-{{ session('alert')['alert'] }}" style="margin-bottom: 0!important;">
-            <h4><i class="fa fa-{{ session('alert')['alert'] }}"></i> Note:</h4>
-            {{ session('alert')['message'] }}
+        <div class="pad margin no-print">
+            <div class="callout callout-{{ session('alert')['alert'] }}" style="margin-bottom: 0!important;">
+                <h4><i class="fa fa-{{ session('alert')['alert'] }}"></i> Note:</h4>
+                {{ session('alert')['message'] }}
+            </div>
         </div>
-    </div>
     @endif
 
     <section class="content">
-        <div class="box box-default color-palette-box">
+        <div class="box box-primary color-palette-box">
             <div class="box-header with-border">
                 <h1 class="box-title"><i class="fa fa-list-ul"></i> List Data User</h1>
             </div>
@@ -50,6 +50,9 @@
 @endsection
 
 @push('scripts')
+    <!-- DataTables -->
+    <script src="{{ asset('/template/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('/template/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
     <script>
         $(function() {
             $('#user_table').DataTable({

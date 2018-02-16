@@ -27,7 +27,15 @@ class UserStoreRequest extends FormRequest
             'name'      => 'required|string|max:255',
             'email'     => 'required|string|email|max:255|unique:users',
             'password'  => 'required|string|min:6|confirmed',
-            'role_id'   => 'required|exists:roles,name',
+            'role_id.*' => 'required|exists:roles,id',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'role_id.*' => 'Role'
+        ];
+    }
+
 }
