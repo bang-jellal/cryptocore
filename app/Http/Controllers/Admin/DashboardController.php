@@ -15,8 +15,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('created_at', 'DESC')
-            ->limit(8)->get();
+        $users = User::orderBy('created_at', 'ASC')
+            ->limit(8)
+            ->get();
 
         return view('admin.dashboard.index', compact('users'));
     }

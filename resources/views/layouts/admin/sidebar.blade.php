@@ -14,6 +14,13 @@
                 </a>
             </li>
 
+            {{-- Management Category --}}
+            <li class="{{ active('admin.category.*') }}">
+                <a href="{{ route('admin.category.index') }}">
+                    <i class="fa fa-list-ul"></i> <span>Management Category</span>
+                </a>
+            </li>
+
             {{-- Management User --}}
             <li class="{{ active('admin.user.*') }}">
                 <a href="{{ route('admin.user.index') }}">

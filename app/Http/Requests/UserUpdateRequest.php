@@ -16,7 +16,6 @@ class UserUpdateRequest extends UserStoreRequest
         }
 
         return true;
-
     }
 
     /**

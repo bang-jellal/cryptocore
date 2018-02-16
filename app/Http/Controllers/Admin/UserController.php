@@ -55,7 +55,6 @@ class UserController extends Controller
             'alert'   => 'success',
             'message' => 'Data User Berhasil Disimpan !'
         ]);
-
     }
 
     /**
