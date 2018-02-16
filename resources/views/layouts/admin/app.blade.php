@@ -65,6 +65,8 @@
 <script src="{{ asset('/template/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
 <script src="{{ asset('/template/adminlte/bower_components/fastclick/lib/fastclick.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('/template/adminlte/dist/js/adminlte.min.js') }}"></script>
 <!-- Sparkline -->
 <script src="{{ asset('/template/adminlte/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js') }}"></script>
 <!-- jvectormap  -->
@@ -72,8 +74,6 @@
 <script src="{{ asset('/template/adminlte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 <!-- SlimScroll -->
 <script src="{{ asset('/template/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('/template/adminlte/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('/template/adminlte/dist/js/demo.js') }}"></script>
 <!-- App scripts -->

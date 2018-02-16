@@ -43,7 +43,8 @@
                 </div>
             </div>
             <div class="box-footer">
-                <a href="{{ route('admin.user.create') }}" type="button" class="btn btn-block btn-primary btn-flat">Add Data User</a>
+                <a href="{{ route('admin.user.create') }}" type="button" class="btn btn-primary btn-flat">Add Data User</a>
+                <a href="{{ route('admin.dashboard.index') }}" type="button" class="btn btn-default btn-flat pull-right ">Home</a>
             </div>
         </div>
     </section>
