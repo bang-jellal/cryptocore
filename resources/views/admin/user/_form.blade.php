@@ -36,7 +36,7 @@
     <div class="col-md-2"></div>
 </div>
 
-@if(request()->route('admin.user.create'))
+@if(request()->route()->getName() === 'admin.user.create')
     <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
         <div class="col-md-2"></div>
         <div class="col-md-8">

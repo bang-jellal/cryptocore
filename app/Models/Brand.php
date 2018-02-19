@@ -5,18 +5,9 @@ namespace App\Models;
 use App\Admin\Product;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * @property mixed $category
- */
-
-class SubCategory extends Model
+class Brand extends Model
 {
     protected $fillable = ['name'];
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
 
     public function product()
     {

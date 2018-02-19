@@ -5,6 +5,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
     Route::get('/', 'DashboardController@index')->name('dashboard.index');
     Route::resource('/user', 'UserController');
     Route::resource('/category', 'CategoryController');
+    Route::resource('/brand', 'BrandController');
+    Route::resource('/product', 'ProductController');
 
     // Sub Category
     Route::get('/category/{category}/sub-category', 'SubCategoryController@index')->name('sub_category.index');
@@ -19,5 +21,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
     Route::get('/data-table/user', 'DataTableController@user')->name('data_table.user');
     Route::get('/data-table/category', 'DataTableController@category')->name('data_table.category');
     Route::get('/data-table/category/{category}/sub-category', 'DataTableController@subCategory')->name('data_table.sub_category');
+    Route::get('/data-table/brand', 'DataTableController@brand')->name('data_table.brand');
 
 });

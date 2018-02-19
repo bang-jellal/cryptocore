@@ -14,6 +14,13 @@
                 </a>
             </li>
 
+            {{-- Management Brand --}}
+            <li class="{{ active('admin.brand.*') }}">
+                <a href="{{ route('admin.brand.index') }}">
+                    <i class="fa fa-tags"></i> <span>Management Brand</span>
+                </a>
+            </li>
+
             {{-- Management Category --}}
             <li class="{{ active(['admin.category.*', 'admin.sub_category.*']) }}">
                 <a href="{{ route('admin.category.index') }}">

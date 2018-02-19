@@ -72,7 +72,7 @@ class RegisterController extends Controller
 
         $profile = new UserProfile();
         $user->profile()->save($profile);
-        $user->assignRole('Admin');
+        $user->assignRole('User');
 
         return $user;
     }
