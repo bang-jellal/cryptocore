@@ -52,7 +52,7 @@ class UserController extends Controller
 
         return redirect()->route('admin.user.index')->with('alert', [
             'alert'   => 'success',
-            'message' => 'Data User Berhasil Disimpan !'
+            'message' => 'User Data Successfully Stored!'
         ]);
     }
 
@@ -97,7 +97,7 @@ class UserController extends Controller
 
         return redirect()->route('admin.user.index')->with('alert', [
             'alert'   => 'success',
-            'message' => 'Data User Berhasil Diperbarui !'
+            'message' => 'User Data Successfully Updated!'
         ]);
 
     }
@@ -117,7 +117,7 @@ class UserController extends Controller
 
         return redirect()->route('admin.user.index')->with('alert', [
             'alert'   => 'success',
-            'message' => 'Data User Berhasil Dihapus !'
+            'message' => 'User Data Successfully Removed !'
         ]);
 
     }
