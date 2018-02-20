@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\admin\ProductStoreRequest;
+use App\Http\Requests\admin\ProductUpdateRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.product.index');
     }
 
     /**
@@ -24,52 +27,65 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param ProductStoreRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request)
     {
-        //
+        $product = new Product();
+        $product->fill($request->except(['_token']));
+        $product->save();
+
+        return redirect()->route('admin.brand.index')->with('alert', [
+            'alert'   => 'success',
+            'message' => 'Product Data Successfully Stored!'
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Product $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return redirect()->route('admin.product.show', $product);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Product $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        return view('admin.product.edit', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param ProductUpdateRequest $request
+     * @param Product $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductUpdateRequest $request, Product $product)
     {
-        //
+        $product->fill($request->except('_token', '_method'));
+        $product->save();
+
+        return redirect()->route('admin.product.index')->with('alert', [
+            'alert'   => 'success',
+            'message' => 'Product Data Successfully Updated!'
+        ]);
     }
 
     /**
@@ -80,6 +96,11 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Product::findOrFail($id)->delete();
+
+        return redirect()->route('admin.product.index')->with('alert', [
+            'alert'   => 'success',
+            'message' => 'Product Data Successfully Removed !'
+        ]);
     }
 }

@@ -28,6 +28,13 @@
                 </a>
             </li>
 
+            {{-- Management Product --}}
+            <li class="{{ active('admin.product.*') }}">
+                <a href="{{ route('admin.product.index') }}">
+                    <i class="fa fa-shopping-bag"></i> <span>Management Product</span>
+                </a>
+            </li>
+
             {{-- Management User --}}
             <li class="{{ active('admin.user.*') }}">
                 <a href="{{ route('admin.user.index') }}">

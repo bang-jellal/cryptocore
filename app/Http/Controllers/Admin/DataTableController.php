@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 
@@ -52,6 +53,7 @@ class DataTableController extends Controller
 
         return $data_table;
     }
+
     public function brand()
     {
         $brand = Brand::all();
@@ -59,6 +61,19 @@ class DataTableController extends Controller
             ->addColumn('action',
                 function ($brand) {
                     return button_data_table($brand, 'admin.brand');
+                })
+            ->toJson();
+
+        return $data_table;
+    }
+
+    public function product()
+    {
+        $product = Product::all();
+        $data_table = datatables($product)
+            ->addColumn('action',
+                function ($product) {
+                    return button_data_table($product, 'admin.product');
                 })
             ->toJson();
 

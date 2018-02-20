@@ -22,5 +22,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.', 'mi
     Route::get('/data-table/category', 'DataTableController@category')->name('data_table.category');
     Route::get('/data-table/category/{category}/sub-category', 'DataTableController@subCategory')->name('data_table.sub_category');
     Route::get('/data-table/brand', 'DataTableController@brand')->name('data_table.brand');
+    Route::get('/data-table/product', 'DataTableController@product')->name('data_table.product');
 
 });
