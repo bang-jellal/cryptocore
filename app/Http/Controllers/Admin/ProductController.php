@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\admin\ProductStoreRequest;
 use App\Http\Requests\admin\ProductUpdateRequest;
+use App\Models\Brand;
 use App\Models\Product;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -27,7 +29,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.create');
+        $brands         = Brand::pluck('name', 'id');
+        $sub_categories = SubCategory::pluck('name', 'id');
+
+
+        return view('admin.product.create', compact('brands', 'sub_categories'));
     }
 
     /**
@@ -38,9 +44,17 @@ class ProductController extends Controller
      */
     public function store(ProductStoreRequest $request)
     {
-        $product = new Product();
-        $product->fill($request->except(['_token']));
-        $product->save();
+        $image_name = time().'.'.request()->image->getClientOriginalExtension();
+        $path       = public_path('product_image');
+        $product    = new Product();
+        $product->fill($request->only('name', 'price', 'description', 'published'));
+
+        if (request()->image->move($path, $image_name)) {
+            $product->image = $image_name;
+            $product->brand()->associate($request->get('brand_id'));
+            $product->subCategory()->associate($request->get('sub_category_id'));
+            $product->save();
+        }
 
         return redirect()->route('admin.brand.index')->with('alert', [
             'alert'   => 'success',

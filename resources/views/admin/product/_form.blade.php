@@ -18,6 +18,62 @@
     <div class="col-md-2"></div>
 </div>
 
+<div class="form-group {{ $errors->has('brand_id') ? ' has-error' : '' }}">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+        <label>
+            @if ($errors->has('brand_id'))
+                <i class="fa fa-times-circle-o"></i>
+            @endif
+            Brand Name
+        </label>
+
+        <select name="brand_id" class="form-control {{ $errors->has('brand_id') ? ' has-error' : '' }}">
+            <option> -- Select Brand -- </option>
+            @foreach($brands as $key => $brand)
+                <option value="{{ $key }}" @if (!empty($product)) {{ $product->brand_id === $key ? 'selected' : '' }} @endif
+                        {{ (old('brand_id') == $key ? 'selected' : '') }}>{{ $brand }}</option>
+            @endforeach
+        </select>
+
+
+        @if ($errors->has('brand_id'))
+            <span class="help-block">{{ $errors->first('brand_id') }}</span>
+        @endif
+
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+<div class="form-group {{ $errors->has('sub_category_id') ? ' has-error' : '' }}">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+        <label>
+            @if ($errors->has('sub_category_id'))
+                <i class="fa fa-times-circle-o"></i>
+            @endif
+            Sub Category
+        </label>
+
+        <select name="sub_category_id" class="form-control {{ $errors->has('sub_category_id') ? ' has-error' : '' }}">
+            <option> -- Select Sub Category -- </option>
+            @foreach($sub_categories as $key => $sub_category)
+                <option value="{{ $key }}" @if (!empty($product)) {{ $product->sub_category_id === $key ? 'selected' : '' }} @endif
+                        {{ (old('sub_category_id') == $key ? 'selected' : '') }}>{{ $sub_category }}</option>
+            @endforeach
+        </select>
+
+
+        @if ($errors->has('sub_category_id'))
+            <span class="help-block">{{ $errors->first('sub_category_id') }}</span>
+        @endif
+
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
 <div class="form-group {{ $errors->has('price') ? ' has-error' : '' }}">
     <div class="col-md-2"></div>
     <div class="col-md-8">
@@ -66,10 +122,11 @@
             @endif
             Published
         </label>
-
         <select name="published" class="form-control">
-            <option value="0" {{ old('published', $product->published ?? false) === false ? 'selected' : '' }}>Draft</option>
-            <option value="1" {{ old('published', $product->published ?? false) === true ? 'selected' : '' }}>Published</option>
+            <option value="0" @if (!empty($product)) {{ $product->published === false ? 'selected' : '' }} @endif
+                    {{ (old('published') == false ? 'selected' : '') }}>Draft</option>
+            <option value="1" @if (!empty($product)) {{ $product->published === true ? 'selected' : '' }} @endif
+                    {{ (old('published') == true ? 'selected' : '') }}>Published</option>
         </select>
 
         @if ($errors->has('published'))

@@ -17,7 +17,8 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Add Data Product</h3>
             </div>
-            <form role="form" class="form-horizontal" method="POST" action="{{ route('admin.product.store') }}">
+            <form role="form" class="form-horizontal" method="POST" action="{{ route('admin.product.store') }}"
+                  enctype="multipart/form-data">
                 <div class="box-body">
                 <div class="col-md-12">
                    @include('admin.product._form')

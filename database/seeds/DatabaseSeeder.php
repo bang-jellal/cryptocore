@@ -37,5 +37,23 @@ class DatabaseSeeder extends Seeder
                 $user->profile()->save($profile);
                 $user->assignRole('User');
             });
+
+        // 3. DATA BRAND
+        $brands = factory(\App\Models\Brand::class)
+            ->times(20)
+            ->create();
+
+        // 3. DATA CATEGORIES
+        $categories = factory(\App\Models\Category::class)
+            ->times(20)
+            ->create()
+            ->each(function ($categories) {
+                $sub_categories = factory(\App\Models\SubCategory::class)
+                    ->times(5)
+                    ->make()
+                    ->each(function ($sub_categories) use ($categories) {
+                        $categories->subCategory()->save($sub_categories);
+                    });
+            });
     }
 }
