@@ -83,7 +83,7 @@
             @endif
             Price
         </label>
-        <input type="number" class="form-control" id="name" placeholder="Enter Price" name="price"
+        <input class="form-control" id="price" placeholder="Enter Price" name="price"
                value="{{ old('price', $product->price ?? '') }}">
         @if ($errors->has('price'))
             <span class="help-block">{{ $errors->first('price') }}</span>
@@ -103,7 +103,7 @@
         </label>
 
         <textarea type="text" class="form-control" id="description" placeholder="Enter Description" rows="4"
-                  name="description">{{ old('description', $product->price ?? '') }}</textarea>
+                  name="description">{{ old('description',$product->description ?? '') }}</textarea>
 
         @if ($errors->has('description'))
             <span class="help-block">{{ $errors->first('description') }}</span>
@@ -145,11 +145,56 @@
             @endif
             Main Image
         </label>
-        <input type="file" class="form-control" id="image" placeholder="Enter Image" name="image">
+
+        <img src="{{ asset('product_image/'.$product->image) ?? ''}}" class="img-responsive" id="profile-img-tag" alt="Photo" width="200px"
+             style="display: {{ $product->image ? 'block': 'none' ?? 'none'}}"><br>
+        <input type="file" class="form-control" id="image" placeholder="Enter Image"
+               name="image" {{ !empty($product) ? empty($product->image) ? '' : 'disabled' : '' }}>
+
         @if ($errors->has('image'))
             <span class="help-block">{{ $errors->first('image') }}</span>
         @endif
+
     </div>
     <div class="col-md-2"></div>
 </div>
+
+@push('scripts')
+    <script>
+        $('#price').inputmask("numeric", {
+            radixPoint: ".",
+            groupSeparator: ",",
+            digits: 2,
+            autoGroup: true,
+            prefix: '$ ',
+            rightAlign: false,
+            oncleared: function () { self.Value(''); }
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#profile-img-tag').attr('src', e.target.result).show();
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function removeImage() {
+            var e = $('#profile-img-tag');
+            e.attr('src','').hide()
+        }
+
+        $("#image").change(function (event, files, label) {
+            var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+            if (file_name) {
+                readURL(this);
+            } else {
+                removeImage()
+            }
+        });
+    </script>
+@endpush
 

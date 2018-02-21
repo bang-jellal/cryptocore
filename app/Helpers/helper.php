@@ -54,3 +54,18 @@ if (! function_exists('user_data_table_role')) {
         return $role;
     }
 }
+
+if (! function_exists('int_to_currency_dollar')) {
+    function int_to_currency_dollar($attribute)
+    {
+        $formatted = "$ " . number_format(sprintf('%0.2f', preg_replace("/[^0-9.]/", "", $attribute)), 2);
+        return $attribute < 0 ? "({$formatted})" : "{$formatted}";
+    }
+}
+
+if (! function_exists('currency_dollar_to_int')) {
+    function currency_dollar_to_int($attribute)
+    {
+        return (int)preg_replace("/([^0-9\\.])/i", "", $attribute);
+    }
+}

@@ -76,6 +76,8 @@
 <script src="{{ asset('/template/adminlte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('/template/adminlte/dist/js/demo.js') }}"></script>
+<!-- Input Mask -->
+<script type="text/javascript" src="{{ asset('template/adminlte/bower_components/inputmask/dist/jquery.inputmask.bundle.js') }}"></script>
 <!-- App scripts -->
 @stack('scripts')
 </body>

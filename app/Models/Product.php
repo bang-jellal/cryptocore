@@ -24,6 +24,16 @@ class Product extends Model
         'published' => 'boolean',
     ];
 
+    public function getPriceAttribute($value)
+    {
+        return int_to_currency_dollar($value);
+    }
+
+    public function settPriceAttribute($value)
+    {
+        $this->attributes['price'] = currency_dollar_to_int($value);
+    }
+
     public function brand()
     {
         return $this->belongsTo(Brand::class);
