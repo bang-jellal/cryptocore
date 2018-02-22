@@ -108,12 +108,18 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Product $product
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        Product::findOrFail($id)->delete();
+        $old_image  = $this->product_service->path.'/'.$product->image;
+
+        if (file_exists($old_image)) {
+            @unlink($old_image);
+            $product->delete();
+        }
 
         return redirect()->route('admin.product.index')->with('alert', [
             'alert'   => 'success',
