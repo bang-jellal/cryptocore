@@ -146,8 +146,15 @@
             Main Image
         </label>
 
-        <img src="{{ asset('product_image/'.$product->image) ?? ''}}" class="img-responsive" id="profile-img-tag" alt="Photo" width="200px"
-             style="display: {{ $product->image ? 'block': 'none' ?? 'none'}}"><br>
+        <img src="{{ !empty($product) ? $product->image  ? asset('product_image/'.$product->image) : '' : '' }}" class="img-responsive" id="profile-img-tag"
+             alt="Photo" width="200px" style="display: {{ !empty($product) ? $product->image ? 'block': 'none' : 'none' }}"><br>
+
+        <input type="hidden" name="old_image" id="old_image" value="1">
+        <button type="button" class="btn btn-default" id="btn_remove"
+                style="display: {{ !empty($product) ?$product->image ? 'block': 'none' : 'none'}}" onclick="removeImage()">
+            Remove Image
+        </button><br>
+
         <input type="file" class="form-control" id="image" placeholder="Enter Image"
                name="image" {{ !empty($product) ? empty($product->image) ? '' : 'disabled' : '' }}>
 
@@ -183,17 +190,18 @@
         }
 
         function removeImage() {
-            var e = $('#profile-img-tag');
-            e.attr('src','').hide()
+            $('#profile-img-tag').attr('src','').hide();
+            $('#old_image').val(0);
+            $('#btn_remove').hide();
+            $('#image').removeAttr('disabled');
         }
 
-        $("#image").change(function (event, files, label) {
+        $("#image").change(function () {
             var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
-            if (file_name) {
+            if (file_name)
                 readURL(this);
-            } else {
+             else
                 removeImage()
-            }
         });
     </script>
 @endpush

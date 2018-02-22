@@ -10,6 +10,7 @@
         "fideloper/proxy": "~4.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "~1.0",
+        "nasyrov/laravel-enums": "^1.1",
         "watson/active": "^2.0",
         "yajra/laravel-datatables": "1.0"
     },

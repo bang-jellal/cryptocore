@@ -153,6 +153,7 @@ return [
          */
         Watson\Active\ActiveServiceProvider::class, // https://github.com/dwightwatson/active
         Yajra\DataTables\DataTablesServiceProvider::class, // https://github.com/yajra/laravel-datatables
+        Nasyrov\Laravel\Enums\EnumServiceProvider::class, //https://github.com/nasyrov/laravel-enums
 
         /*
          * Application Service Providers...

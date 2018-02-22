@@ -7,11 +7,22 @@ use App\Http\Requests\admin\ProductUpdateRequest;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\SubCategory;
-use Illuminate\Http\Request;
+use App\Services\ProductService;
 use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
+    public $product_service;
+
+    /**
+     * ProductController constructor.
+     * @param ProductService $product_service
+     */
+    public function __construct(ProductService $product_service)
+    {
+        $this->product_service = $product_service;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,19 +55,9 @@ class ProductController extends Controller
      */
     public function store(ProductStoreRequest $request)
     {
-        $image_name = time().'.'.request()->image->getClientOriginalExtension();
-        $path       = public_path('product_image');
-        $product    = new Product();
-        $product->fill($request->only('name', 'price', 'description', 'published'));
+        $this->product_service->store($request);
 
-        if (request()->image->move($path, $image_name)) {
-            $product->image = $image_name;
-            $product->brand()->associate($request->get('brand_id'));
-            $product->subCategory()->associate($request->get('sub_category_id'));
-            $product->save();
-        }
-
-        return redirect()->route('admin.brand.index')->with('alert', [
+        return redirect()->route('admin.product.index')->with('alert', [
             'alert'   => 'success',
             'message' => 'Product Data Successfully Stored!'
         ]);
@@ -96,8 +97,7 @@ class ProductController extends Controller
      */
     public function update(ProductUpdateRequest $request, Product $product)
     {
-        $product->fill($request->except('_token', '_method'));
-        $product->save();
+        $this->product_service->update($request, $product);
 
         return redirect()->route('admin.product.index')->with('alert', [
             'alert'   => 'success',
