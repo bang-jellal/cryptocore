@@ -43,17 +43,17 @@
 
 </head>
 <body class="animsition">
-    <div id="app">
         <!-- Header -->
         @include('layouts.header')
-        <!-- Content page -->
-        @yield('content')
-        <!-- Footer -->
+        <div id="app">
+            <!-- Content page -->
+            @yield('content')
+            <!-- Footer -->
+        </div>
         @include('layouts.footer')
         <!-- Container Selection -->
         <div id="dropDownSelect1"></div>
         <div id="dropDownSelect2"></div>
-    </div>
     <!--===============================================================================================-->
     <script type="text/javascript" src="{{ asset('template/fashe/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
     <!--===============================================================================================-->
@@ -101,35 +101,11 @@
         });
     </script>
     <!--===============================================================================================-->
-    <script type="text/javascript" src="{{ asset('template/fashe/vendor/noui/nouislider.min.js') }}"></script>
-    <script type="text/javascript">
-        /*[ No ui ]
-        ===========================================================*/
-        var filterBar = document.getElementById('filter-bar');
-
-        noUiSlider.create(filterBar, {
-            start: [ 50, 200 ],
-            connect: true,
-            range: {
-                'min': 50,
-                'max': 200
-            }
-        });
-
-        var skipValues = [
-            document.getElementById('value-lower'),
-            document.getElementById('value-upper')
-        ];
-
-        filterBar.noUiSlider.on('update', function( values, handle ) {
-            skipValues[handle].innerHTML = Math.round(values[handle]) ;
-        });
-    </script>
-    <!--===============================================================================================-->
     <script src="{{ asset('template/fashe/js/main.js') }}"></script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- Footer Scripts -->
     @stack('footer_script')
+
 </body>
 </html>

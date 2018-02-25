@@ -4,7 +4,7 @@ if (! function_exists('button_data_table')) {
     function button_data_table($data, $url)
     {
         $show    = '<form action="'.route($url.'.destroy', $data).'" method="POST">
-                    <a href="'.route($url.'.show',   $data).'" class="btn btn-xs btn-info">
+                    <a href="'.route($url.'.show',   $data).'" class="btn btn-xs btn-success">
                     <i class="glyphicon glyphicon-eye-open"></i> Show</a>';
         $edit    = '<a href="'.route($url.'.edit',   $data).'" class="btn btn-xs btn-primary">
                     <i class="glyphicon glyphicon-edit"></i> Edit</a>';
@@ -23,7 +23,7 @@ if (! function_exists('button_data_table_sub')) {
     function button_data_table_sub($sub_data, $data, $url)
     {
         $show    = '<form action="'.route($url.'.destroy', [$sub_data, $data]).'" method="POST">
-                    <a href="'.route($url.'.show', [$sub_data, $data]).'" class="btn btn-xs btn-info">
+                    <a href="'.route($url.'.show', [$sub_data, $data]).'" class="btn btn-xs btn-success">
                     <i class="glyphicon glyphicon-eye-open"></i> Show</a>';
         $edit    = '<a href="'.route($url.'.edit', [$sub_data, $data]).'" class="btn btn-xs btn-primary">
                     <i class="glyphicon glyphicon-edit"></i> Edit</a>';

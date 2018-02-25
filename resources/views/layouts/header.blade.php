@@ -12,12 +12,12 @@
                 <nav class="menu">
                     <ul class="main_menu">
                         <li>
-                            <a href="index.html">Home</a>
-                            <ul class="sub_menu">
-                                <li><a href="index.html">Homepage V1</a></li>
-                                <li><a href="home-02.html">Homepage V2</a></li>
-                                <li><a href="home-03.html">Homepage V3</a></li>
-                            </ul>
+                            <a href="{{ route('home') }}">Home</a>
+                            {{--<ul class="sub_menu">--}}
+                                {{--<li><a href="index.html">Homepage V1</a></li>--}}
+                                {{--<li><a href="home-02.html">Homepage V2</a></li>--}}
+                                {{--<li><a href="home-03.html">Homepage V3</a></li>--}}
+                            {{--</ul>--}}
                         </li>
 
                         <li>

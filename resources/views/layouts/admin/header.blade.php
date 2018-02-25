@@ -18,35 +18,13 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ asset('/template/adminlte/dist/img/user2-128x128.jpg') }}" class="user-image" alt="User Image">
-                        <span class="hidden-xs">{{ auth()->user()->name }}</span>
+                    <a class="fa fa-sign-out" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                       document.getElementById('logout-form').submit();">   Sign out
                     </a>
-                    <ul class="dropdown-menu">
-                        <!-- User image -->
-                        <li class="user-header">
-                            <img src="{{ asset('/template/adminlte/dist/img/user2-128x128.jpg') }}" class="img-circle" alt="User Image">
-                            <p>
-                                {{ auth()->user()->name }} - Web Developer
-                                <small>Member since {{ \Carbon\Carbon::parse(auth()->user()->created_at)->format('M. Y') }}</small>
-                            </p>
-                        </li>
-                        <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
-                            </div>
-                            <div class="pull-right">
-                                <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">
-                                    Sign out
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </div>
