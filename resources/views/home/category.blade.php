@@ -16,7 +16,7 @@
 
                 <!-- block1 -->
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ asset('template/fashe/images/banner-05.jpg') }}" alt="IMG-BENNER">
+                    <img src="{{ asset('template/fashe/images/banner-02.jpg') }}" alt="IMG-BENNER">
 
                     <div class="block1-wrapbtn w-size2">
                         <!-- Button -->
@@ -68,7 +68,7 @@
 
                 <!-- block2 -->
                 <div class="block2 wrap-pic-w pos-relative m-b-30">
-                    <img src="{{ asset('template/fashe/images/banner-01.jpg') }}" alt="IMG">
+                    <img src="{{ asset('template/fashe/images/banner-05.jpg') }}" alt="IMG">
 
                     <div class="block2-content sizefull ab-t-l flex-col-c-m">
                         <h4 class="m-text4 t-center w-size3 p-b-8">

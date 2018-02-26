@@ -2,7 +2,7 @@
 
 @section('content')
     @include('home.slide')
-    @include('home.banner')
+    @include('home.category')
     @include('home.product')
     @include('home.banner3')
     @include('home.shipping')

@@ -17,7 +17,8 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Update Data Category</h3>
             </div>
-            <form role="form" class="form-horizontal" method="POST" action="{{ route('admin.category.update', $category) }}">
+            <form role="form" class="form-horizontal" method="POST" action="{{ route('admin.category.update', $category) }}"
+                  enctype="multipart/form-data">
                 <div class="box-body">
                     <div class="col-md-12">
                         {{ method_field('PUT') }}

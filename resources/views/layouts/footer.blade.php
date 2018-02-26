@@ -124,7 +124,7 @@
 
             <form>
                 <div class="effect1 w-size9">
-                    <input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@example.com">
+                    <input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="anwar.muthohari@gmail.com">
                     <span class="effect1-line"></span>
                 </div>
 
@@ -161,7 +161,8 @@
         </a>
 
         <div class="t-center s-text8 p-t-20">
-            Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            <strong>Copyright &copy; 2018-2019 <a href="#">{{ config('app.name', 'Laravel') }}</a>.</strong> All rights
+            reserved.
         </div>
     </div>
 </footer>

@@ -11,7 +11,7 @@
             <div class="wrap_menu">
                 <nav class="menu">
                     <ul class="main_menu">
-                        <li>
+                        <li class="{{ active(['home'], 'sale-noti') }}">
                             <a href="{{ route('home') }}">Home</a>
                             {{--<ul class="sub_menu">--}}
                                 {{--<li><a href="index.html">Homepage V1</a></li>--}}
@@ -20,28 +20,16 @@
                             {{--</ul>--}}
                         </li>
 
-                        <li>
-                            <a href="product.html">Shop</a>
+                        <li class="{{ active(['category'], 'sale-noti') }}">
+                            <a href="{{ route('category') }}">Category</a>
                         </li>
 
-                        <li class="sale-noti">
-                            <a href="product.html">Sale</a>
+                        <li class="{{ active(['product'], 'sale-noti') }}">
+                            <a href="{{ route('product') }}">Product</a>
                         </li>
 
-                        <li>
-                            <a href="cart.html">Features</a>
-                        </li>
-
-                        <li>
-                            <a href="blog.html">Blog</a>
-                        </li>
-
-                        <li>
-                            <a href="about.html">About</a>
-                        </li>
-
-                        <li>
-                            <a href="contact.html">Contact</a>
+                        <li class="{{ active(['brand'], 'sale-noti') }}">
+                            <a href="{{ route('brand') }}">Brand</a>
                         </li>
                     </ul>
                 </nav>

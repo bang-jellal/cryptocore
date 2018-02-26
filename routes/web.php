@@ -12,7 +12,12 @@
 */
 
 Auth::routes();
+
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('product', 'ProductController@index')->name('product');
+Route::get('category', 'CategoryController@index')->name('category');
+Route::get('brand', 'BrandController@index')->name('brand');
+
 Route::group(['middleware' => 'auth'], function() {
     include __DIR__ . '/web/admin.php'; // Role Admin
 });

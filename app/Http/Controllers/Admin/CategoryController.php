@@ -6,9 +6,21 @@ use App\Http\Requests\Admin\CategoryStoreRequest;
 use App\Http\Requests\Admin\CategoryUpdateRequest;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Services\CategoryService;
 
 class CategoryController extends Controller
 {
+    public $category_service;
+
+    /**
+     * ProductController constructor.
+     * @param CategoryService $category_service
+     */
+    public function __construct(CategoryService $category_service)
+    {
+        $this->category_service = $category_service;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -38,9 +50,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-        $category = new Category();
-        $category->fill($request->except(['_token']));
-        $category->save();
+        $this->category_service->store($request);
 
         return redirect()->route('admin.category.index')->with('alert', [
             'alert'   => 'success',
@@ -80,8 +90,7 @@ class CategoryController extends Controller
      */
     public function update(CategoryUpdateRequest $request, Category $category)
     {
-        $category->fill($request->except('_token', '_method'));
-        $category->save();
+        $this->category_service->update($request, $category);
 
         return redirect()->route('admin.category.index')->with('alert', [
             'alert'   => 'success',

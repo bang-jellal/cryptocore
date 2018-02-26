@@ -45,11 +45,11 @@ class DatabaseSeeder extends Seeder
 
         // 3. DATA CATEGORIES
         $categories = factory(\App\Models\Category::class)
-            ->times(20)
+            ->times(6)
             ->create()
             ->each(function ($categories) {
                 $sub_categories = factory(\App\Models\SubCategory::class)
-                    ->times(5)
+                    ->times(3)
                     ->make()
                     ->each(function ($sub_categories) use ($categories) {
                         $categories->subCategory()->save($sub_categories);

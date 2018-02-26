@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('template/fashe/css/main.css') }}">
     <!--===============================================================================================-->
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     <!-- Header Scripts -->
     @stack('header_script')
 
@@ -103,7 +103,7 @@
     <!--===============================================================================================-->
     <script src="{{ asset('template/fashe/js/main.js') }}"></script>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{--<script src="{{ asset('js/app.js') }}"></script>--}}
     <!-- Footer Scripts -->
     @stack('footer_script')
 
