@@ -99,7 +99,6 @@ class UserController extends Controller
             'alert'   => 'success',
             'message' => 'User Data Successfully Updated!'
         ]);
-
     }
 
     /**
@@ -119,6 +118,5 @@ class UserController extends Controller
             'alert'   => 'success',
             'message' => 'User Data Successfully Removed !'
         ]);
-
     }
 }

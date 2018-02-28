@@ -40,7 +40,7 @@ class Product extends Model
     {
         $exists = Storage::disk('local')->exists($this->attributes['image']);
 
-        if ($exists){
+        if ($exists) {
             return Storage::url($this->attributes['image']);
         }
 

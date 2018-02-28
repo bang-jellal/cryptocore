@@ -14,14 +14,18 @@ class DataTableController extends Controller
     {
         $users = User::all();
         $data_table = datatables($users)
-            ->addColumn('role',
+            ->addColumn(
+                'role',
                 function ($users) {
                     return user_data_table_role($users);
-                })
-            ->addColumn('action',
+                }
+            )
+            ->addColumn(
+                'action',
                 function ($users) {
                     return button_data_table($users, 'admin.user');
-                })
+                }
+            )
             ->rawColumns(['role', 'action'])
             ->toJson();
 
@@ -32,10 +36,12 @@ class DataTableController extends Controller
     {
         $categories = Category::all();
         $data_table = datatables($categories)
-            ->addColumn('action',
+            ->addColumn(
+                'action',
                 function ($categories) {
                     return button_data_table($categories, 'admin.category');
-                })
+                }
+            )
             ->toJson();
 
         return $data_table;
@@ -45,10 +51,12 @@ class DataTableController extends Controller
     {
         $sub_categories = $category->subCategory()->get();
         $data_table     = datatables($sub_categories)
-            ->addColumn('action',
+            ->addColumn(
+                'action',
                 function ($sub_categories) use ($category) {
                     return button_data_table_sub($category, $sub_categories, 'admin.sub_category');
-                })
+                }
+            )
             ->toJson();
 
         return $data_table;
@@ -58,10 +66,12 @@ class DataTableController extends Controller
     {
         $brand = Brand::all();
         $data_table = datatables($brand)
-            ->addColumn('action',
+            ->addColumn(
+                'action',
                 function ($brand) {
                     return button_data_table($brand, 'admin.brand');
-                })
+                }
+            )
             ->toJson();
 
         return $data_table;
@@ -71,10 +81,12 @@ class DataTableController extends Controller
     {
         $product = Product::all();
         $data_table = datatables($product)
-            ->addColumn('action',
+            ->addColumn(
+                'action',
                 function ($product) {
                     return button_data_table($product, 'admin.product');
-                })
+                }
+            )
             ->toJson();
 
         return $data_table;

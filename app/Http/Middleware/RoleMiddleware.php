@@ -15,8 +15,7 @@ class RoleMiddleware
      */
     public function handle($request, Closure $next, $role_name)
     {
-        if (auth()->check() && ! auth()->user()->hasRole($role_name))
-        {
+        if (auth()->check() && ! auth()->user()->hasRole($role_name)) {
             return abort(401, 'Unauthorized');
         }
 

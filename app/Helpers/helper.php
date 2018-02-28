@@ -4,9 +4,9 @@ if (! function_exists('button_data_table')) {
     function button_data_table($data, $url)
     {
         $show    = '<form action="'.route($url.'.destroy', $data).'" method="POST">
-                    <a href="'.route($url.'.show',   $data).'" class="btn btn-xs btn-success">
+                    <a href="'.route($url.'.show', $data).'" class="btn btn-xs btn-success">
                     <i class="glyphicon glyphicon-eye-open"></i> Show</a>';
-        $edit    = '<a href="'.route($url.'.edit',   $data).'" class="btn btn-xs btn-primary">
+        $edit    = '<a href="'.route($url.'.edit', $data).'" class="btn btn-xs btn-primary">
                     <i class="glyphicon glyphicon-edit"></i> Edit</a>';
         $delete  = ''. method_field('DELETE'). csrf_field().'
                     <button type="submit" class="btn btn-xs btn-danger" 

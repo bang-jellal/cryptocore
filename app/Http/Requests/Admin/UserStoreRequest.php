@@ -37,5 +37,4 @@ class UserStoreRequest extends FormRequest
             'role_id.*' => 'Role'
         ];
     }
-
 }
