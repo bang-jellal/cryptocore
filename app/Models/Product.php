@@ -4,13 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-
-/**
- * @property bool $published
- * @property mixed $brand
- * @property string $price
- * @property mixed $sub_category
- */
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -19,7 +13,6 @@ class Product extends Model
      *
      * @var array
      */
-
     protected $fillable = [
         'name', 'price', 'description', 'published'
     ];
@@ -29,7 +22,8 @@ class Product extends Model
     ];
 
     /**
-     * @param $value
+     * Get the product price attribute.
+     *
      * @return string
      */
     public function getPriceAttribute($value)
@@ -38,22 +32,30 @@ class Product extends Model
     }
 
     /**
-     * @param $value
+     * Get the product image attribute.
+     *
+     * @return string
      */
+    public function getImageUrlAttribute()
+    {
+        $exists = Storage::disk('local')->exists($this->attributes['image']);
+
+        if ($exists){
+            return Storage::url($this->attributes['image']);
+        }
+
+        return asset('template/fashe/images/banner-05.jpg');
+    }
+
     public function setPriceAttribute($value)
     {
         $this->attributes['price'] = currency_dollar_to_int($value);
     }
 
-    /**
-     * @param Builder $query
-     * @return Builder
-     */
     public function scopePublished(Builder $query)
     {
         return $query->where('published', true);
     }
-
 
     public function brand()
     {

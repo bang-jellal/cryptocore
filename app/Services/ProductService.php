@@ -14,18 +14,22 @@ class ProductService
      */
     public function __construct()
     {
-        $this->path = public_path(ImageEnum::PRODUCT_PATH);
+        $this->path = ImageEnum::PRODUCT_PATH;
     }
 
+    /**
+     * @param $request
+     * @return Product
+     * @throws \Illuminate\Database\Eloquent\MassAssignmentException
+     */
     public function store($request)
     {
         // upload image
-        $image_name = time().'.'.request()->image->getClientOriginalExtension();
-        request()->image->move($this->path, $image_name);
+        $path = $request->file('image')->store($this->path);
 
         // store product
         $product        = new Product();
-        $product->image = $image_name;
+        $product->image = $path;
         $product->fill($request->only('name', 'price', 'description', 'published'));
         $product->brand()->associate($request->get('brand_id'));
         $product->subCategory()->associate($request->get('sub_category_id'));
@@ -37,21 +41,16 @@ class ProductService
     /**
      * @param $request
      * @param Product $product
-     * @return mixed
+     * @return Product
+     * @throws \Illuminate\Database\Eloquent\MassAssignmentException
      */
     public function update($request, $product)
     {
-        $old_image  = $this->path.'/'.$product->image;
+        Storage::delete($product->image);
+        $path = $request->file('image')->store($this->path);
 
+        $product->image = $path;
         $product->fill($request->only('name', 'price', 'description', 'published'));
-
-        if (request()->get('old_image') == 0 && file_exists($old_image)) {
-            @unlink($old_image);
-            $image_name = time().'.'.request()->image->getClientOriginalExtension();
-            request()->image->move($this->path, $image_name);
-            $product->image = $image_name;
-        }
-
         $product->brand()->associate($request->get('brand_id'));
         $product->subCategory()->associate($request->get('sub_category_id'));
         $product->save();

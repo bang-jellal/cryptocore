@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\SubCategory;
 use App\Services\ProductService;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -82,6 +83,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        $contents = Storage::get($product->image);
+
         $brands         = Brand::pluck('name', 'id');
         $sub_categories = SubCategory::pluck('name', 'id');
 
@@ -114,12 +117,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $old_image  = $this->product_service->path.'/'.$product->image;
-
-        if (file_exists($old_image)) {
-            @unlink($old_image);
-            $product->delete();
-        }
+        Storage::delete($product->image);
+        $product->delete();
 
         return redirect()->route('admin.product.index')->with('alert', [
             'alert'   => 'success',

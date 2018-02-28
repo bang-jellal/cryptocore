@@ -9,7 +9,8 @@ if (! function_exists('button_data_table')) {
         $edit    = '<a href="'.route($url.'.edit',   $data).'" class="btn btn-xs btn-primary">
                     <i class="glyphicon glyphicon-edit"></i> Edit</a>';
         $delete  = ''. method_field('DELETE'). csrf_field().'
-                    <button type="submit" class="btn btn-xs btn-danger confirm-table-delete" onclick="alertDelete(this);">
+                    <button type="submit" class="btn btn-xs btn-danger" 
+                    onclick="return confirm(\'Are you sure you want to delete this item ? \');">
                     <i class="glyphicon glyphicon-trash"></i> Delete</button></form>';
 
         $buttons = $show.'&ensp;'.$edit.'&ensp;'.$delete;
@@ -28,7 +29,7 @@ if (! function_exists('button_data_table_sub')) {
                     <i class="glyphicon glyphicon-edit"></i> Edit</a>';
         $delete  = ''. method_field('DELETE'). csrf_field().'
                     <button type="submit" class="btn btn-xs btn-danger" 
-                    onclick="alertDelete(this);">
+                    onclick="return confirm(\'Are you sure you want to delete this item ? \');">
                     <i class="glyphicon glyphicon-trash"></i> Delete</button></form>';
 
         $buttons = $show.'&ensp;'.$edit.'&ensp;'.$delete;

@@ -10,6 +10,8 @@
         "fideloper/proxy": "~4.0",
         "laravel/framework": "5.6.*",
         "laravel/tinker": "~1.0",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "league/flysystem-rackspace": "^1.0",
         "nasyrov/laravel-enums": "^1.1",
         "watson/active": "^2.0",
         "yajra/laravel-datatables": "1.0"
@@ -20,6 +22,7 @@
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "~1.0",
         "phpunit/phpunit": "~7.0",
+        "squizlabs/php_codesniffer": "3.*",
         "symfony/thanks": "^1.0"
     },
     "autoload": {

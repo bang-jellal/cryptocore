@@ -1,93 +1,59 @@
 <section class="banner bgwhite p-t-40 p-b-40">
     <div class="container">
         <div class="row">
-            <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-                <!-- block1 -->
-                <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ asset('template/fashe/images/banner-02.jpg') }}" alt="IMG-BENNER">
-
-                    <div class="block1-wrapbtn w-size2">
-                        <!-- Button -->
-                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-                            Dresses
-                        </a>
-                    </div>
+            @foreach($categories->chunk(2) as $category)
+                <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+                    @if($loop->index !== 1)
+                        @foreach($category as $item)
+                            @if($loop->first)
+                                <div class="block1 hov-img-zoom pos-relative m-b-30">
+                                    <img src="{{ $item->imageUrl }}" alt="{{ $item->name }}"
+                                         style="width: 370px; height: 479px;">
+                                    <div class="block1-wrapbtn w-size2">
+                                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                            {{ $item->name }}
+                                        </a>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="block1 hov-img-zoom pos-relative m-b-30">
+                                    <img src="{{ $item->imageUrl }}" alt="{{ $item->name }}"
+                                         style="width: 370px; height: 339px;">
+                                    <div class="block1-wrapbtn w-size2">
+                                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                            {{ $item->name }}
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    @else
+                        @foreach($category as $item)
+                            @if($loop->first)
+                                <div class="block1 hov-img-zoom pos-relative m-b-30">
+                                    <img src="{{ $item->imageUrl }}" alt="{{ $item->name }}"
+                                         style="width: 370px; height: 339px;">
+                                    <div class="block1-wrapbtn w-size2">
+                                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                            {{ $item->name }}
+                                        </a>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="block1 hov-img-zoom pos-relative m-b-30">
+                                    <img src="{{ $item->imageUrl }}" alt="{{ $item->name }}"
+                                         style="width: 370px; height: 479px;">
+                                    <div class="block1-wrapbtn w-size2">
+                                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                            {{ $item->name }}
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    @endif
                 </div>
-
-                <!-- block1 -->
-                <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ asset('template/fashe/images/banner-02.jpg') }}" alt="IMG-BENNER">
-
-                    <div class="block1-wrapbtn w-size2">
-                        <!-- Button -->
-                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-                            Sunglasses
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-                <!-- block1 -->
-                <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ asset('template/fashe/images/banner-03.jpg') }}" alt="IMG-BENNER">
-
-                    <div class="block1-wrapbtn w-size2">
-                        <!-- Button -->
-                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-                            Watches
-                        </a>
-                    </div>
-                </div>
-
-                <!-- block1 -->
-                <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ asset('template/fashe/images/banner-07.jpg') }}" alt="IMG-BENNER">
-
-                    <div class="block1-wrapbtn w-size2">
-                        <!-- Button -->
-                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-                            Footerwear
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-                <!-- block1 -->
-                <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ asset('template/fashe/images/banner-04.jpg') }}" alt="IMG-BENNER">
-
-                    <div class="block1-wrapbtn w-size2">
-                        <!-- Button -->
-                        <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
-                            Bags
-                        </a>
-                    </div>
-                </div>
-
-                <!-- block2 -->
-                <div class="block2 wrap-pic-w pos-relative m-b-30">
-                    <img src="{{ asset('template/fashe/images/banner-05.jpg') }}" alt="IMG">
-
-                    <div class="block2-content sizefull ab-t-l flex-col-c-m">
-                        <h4 class="m-text4 t-center w-size3 p-b-8">
-                            Sign up & get 20% off
-                        </h4>
-
-                        <p class="t-center w-size4">
-                            Be the frist to know about the latest fashion news and get exclu-sive offers
-                        </p>
-
-                        <div class="w-size2 p-t-25">
-                            <!-- Button -->
-                            <a href="#" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
-                                Sign Up
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

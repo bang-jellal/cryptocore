@@ -28,13 +28,13 @@
             Main Image
         </label>
 
-        <img src="{{ !empty($category) ? $category->image  ? asset(\App\Enums\ImageEnum::CATEGORY_PATH.'/'.$category->image) : '' : '' }}"
+        <img src="{{ !empty($category) ? $category->image ? $category->imageUrl : '' : '' }}"
              class="img-responsive" id="profile-img-tag" alt="Photo" width="200px"
              style="display: {{ !empty($category) ? $category->image ? 'block': 'none' : 'none' }}"><br>
 
         <input type="hidden" name="old_image" id="old_image" value="1">
         <button type="button" class="btn btn-default" id="btn_remove"
-                style="display: {{ !empty($product) ?$product->image ? 'block': 'none' : 'none'}}"
+                style="display: {{ !empty($category) ?$category->image ? 'block': 'none' : 'none'}}"
                 onclick="removeImage()">
             Remove Image
         </button><br>

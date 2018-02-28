@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         $admin->assignRole('Admin');
 
         $users = factory(\App\Models\User::class)
-            ->times(20)
+            ->times(5)
             ->create()
             ->each(function ($user) {
                 $profile = factory(\App\Models\UserProfile::class)->make();
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
 
         // 3. DATA BRAND
         $brands = factory(\App\Models\Brand::class)
-            ->times(20)
+            ->times(5)
             ->create();
 
         // 3. DATA CATEGORIES
@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
             ->create()
             ->each(function ($categories) {
                 $sub_categories = factory(\App\Models\SubCategory::class)
-                    ->times(3)
+                    ->times(2)
                     ->make()
                     ->each(function ($sub_categories) use ($categories) {
                         $categories->subCategory()->save($sub_categories);

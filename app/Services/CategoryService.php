@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Enums\ImageEnum;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryService
 {
@@ -14,19 +15,18 @@ class CategoryService
      */
     public function __construct()
     {
-        $this->path = public_path(ImageEnum::CATEGORY_PATH);
+        $this->path = ImageEnum::CATEGORY_PATH;
     }
 
     public function store($request)
     {
         // upload image
-        $image_name = time().'.'.request()->image->getClientOriginalExtension();
-        request()->image->move($this->path, $image_name);
+        $path = $request->file('image')->store($this->path);
 
         // store category
         $category = new Category();
         $category->name  = $request->get('name');
-        $category->image = $image_name;
+        $category->image = $path;
         $category->save();
 
         return $category;
@@ -39,21 +39,11 @@ class CategoryService
      */
     public function update($request, $category)
     {
-        $old_image  = $this->path.'/'.$category->image;
+        Storage::delete($category->image);
+        $path = $request->file('image')->store($this->path);
 
+        $category->image = $path;
         $category->name  = $request->get('name');
-
-        if (request()->get('old_image') == 0 && file_exists($old_image)) {
-            @unlink($old_image);
-            $image_name = time().'.'.request()->image->getClientOriginalExtension();
-            request()->image->move($this->path, $image_name);
-            $category->image = $image_name;
-        } elseif (is_null($category->image)) {
-            $image_name = time().'.'.request()->image->getClientOriginalExtension();
-            request()->image->move($this->path, $image_name);
-            $category->image = $image_name;
-        }
-
         $category->save();
 
         return $category;

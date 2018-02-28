@@ -6,6 +6,6 @@ use Nasyrov\Laravel\Enums\Enum;
 
 class ImageEnum extends Enum
 {
-    const PRODUCT_PATH  = 'product_image';
-    const CATEGORY_PATH = 'product_category';
+    public const PRODUCT_PATH  = 'public/images/product';
+    public const CATEGORY_PATH = 'public/images/category';
 }

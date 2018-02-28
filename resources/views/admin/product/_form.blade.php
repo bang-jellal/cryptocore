@@ -146,12 +146,13 @@
             Main Image
         </label>
 
-        <img src="{{ !empty($product) ? $product->image  ? asset('product_image/'.$product->image) : '' : '' }}" class="img-responsive" id="profile-img-tag"
+        <img src="{{ !empty($product) ? $product->image  ? $product->imageUrl : '' : '' }}" class="img-responsive" id="profile-img-tag"
              alt="Photo" width="200px" style="display: {{ !empty($product) ? $product->image ? 'block': 'none' : 'none' }}"><br>
 
         <input type="hidden" name="old_image" id="old_image" value="1">
         <button type="button" class="btn btn-default" id="btn_remove"
-                style="display: {{ !empty($product) ?$product->image ? 'block': 'none' : 'none'}}" onclick="removeImage()">
+                style="display: {{ !empty($product) ?$product->image ? 'block': 'none' : 'none'}}"
+                onclick="removeImage()">
             Remove Image
         </button><br>
 

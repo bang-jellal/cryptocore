@@ -20,7 +20,9 @@ class HomeController extends Controller
             ->limit(8)
             ->get();
 
-        $categories = Category::all()->random(6);
+        $categories = Category::inRandomOrder()
+            ->limit(6)
+            ->get();
 
         return view('home.index', compact('products', 'categories'));
     }
