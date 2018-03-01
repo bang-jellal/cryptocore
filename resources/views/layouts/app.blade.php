@@ -33,6 +33,8 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ asset('template/fashe/vendor/lightbox2/css/lightbox.min.css') }}">
     <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('template/fashe/vendor/noui/nouislider.min.css') }}">
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ asset('template/fashe/css/util.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('template/fashe/css/main.css') }}">
     <!--===============================================================================================-->
