@@ -15,8 +15,7 @@
 	<section class="bgwhite p-t-55 p-b-65">
 		<div class="container">
 			<div class="row">
-                @include('product.sidebar_product')
-                
+                @include('layouts.product.sidebar')
                 <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
 					<div class="flex-sb-m flex-w p-b-35">
 						<div class="flex-w">
@@ -43,7 +42,7 @@
 						</div>
 
 						<span class="s-text8 p-t-5 p-b-5">
-							Showing 1–12 of 16 results
+							Showing {{ $products->firstItem() }}–{{ $products->lastItem() }} of {{ $products->total() }} results
 						</span>
 					</div>
 
@@ -53,7 +52,8 @@
                             <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                                 <div class="block2">
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-                                        <img src="{{ $product->imageUrl }}" alt="{{ $product->name }}">
+                                        <img src="{{ $product->imageUrl }}" alt="{{ $product->name }}"
+                                             style="width: 270px; height: 180px;">
                                         <div class="block2-overlay trans-0-4">
                                             <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                                 <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
@@ -79,12 +79,7 @@
                             </div>
                         @endforeach
 					</div>
-
-					<!-- Pagination -->
-					<div class="pagination flex-m flex-w p-t-26">
-						<a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-						<a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
-					</div>
+				{{ $products->links('layouts.pagination') }}
 				</div>
 			</div>
 		</div>

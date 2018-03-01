@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
@@ -16,7 +17,7 @@ class ProductController extends Controller
     {
         $products = Product::published()
             ->orderBy('created_at', 'ASC')
-            ->get();
+            ->paginate(20);
 
         return view('product.index', compact('products'));
     }
