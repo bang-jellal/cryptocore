@@ -3,10 +3,10 @@
 namespace App\Services;
 
 use App\Enums\ImageEnum;
-use App\Models\Category;
+use App\Models\Brand;
 use Illuminate\Support\Facades\Storage;
 
-class CategoryService
+class BrandService
 {
     public $path;
 
@@ -15,7 +15,7 @@ class CategoryService
      */
     public function __construct()
     {
-        $this->path = ImageEnum::CATEGORY_PATH;
+        $this->path = ImageEnum::BRAND_PATH;
     }
 
     public function store($request)
@@ -24,7 +24,7 @@ class CategoryService
         $path = $request->file('image')->store($this->path);
 
         // store category
-        $category = new Category();
+        $category = new Brand();
         $category->name  = $request->get('name');
         $category->image = $path;
         $category->save();
@@ -34,20 +34,20 @@ class CategoryService
 
     /**
      * @param $request
-     * @param Category $category
+     * @param $brand
      * @return mixed
      */
-    public function update($request, $category)
+    public function update($request, $brand)
     {
         if ($request->file('image')) {
-            Storage::delete($category->image);
+            Storage::delete($brand->image);
             $path = $request->file('image')->store($this->path);
-            $category->image = $path;
+            $brand->image = $path;
         }
 
-        $category->name  = $request->get('name');
-        $category->save();
+        $brand->name  = $request->get('name');
+        $brand->save();
 
-        return $category;
+        return $brand;
     }
 }

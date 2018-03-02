@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\CategoryUpdateRequest;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Services\CategoryService;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -101,12 +102,14 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Category $category
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        Category::findOrFail($id)->delete();
+        Storage::delete($category->image);
+        $category->delete();
 
         return redirect()->route('admin.category.index')->with('alert', [
             'alert'   => 'success',

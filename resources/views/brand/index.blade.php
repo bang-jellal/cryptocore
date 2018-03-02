@@ -4,10 +4,10 @@
     <!-- Title Page -->
     <section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(/template/fashe/images/slide-1.jpg);">
     <h3 class="m-text9 t-center">
-        List of Category
+        List of Brand
     </h3>
     <p class="m-text13 t-center">
-        All Category
+        All Brand
     </p>
     </section>
   
@@ -27,34 +27,34 @@
                             </div>
                         </div>
 						<span class="s-text8 p-t-5 p-b-5">
-							Showing {{ $categories->firstItem() }}–{{ $categories->lastItem() }} of {{ $categories->total() }} results
+							Showing {{ $brands->firstItem() }}–{{ $brands->lastItem() }} of {{ $brands->total() }} results
 						</span>
 					</div>
 
 					<!-- Product -->
 					<div class="row">
-                        @foreach ($categories as $category)
+                        @foreach ($brands as $brand)
                             <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                                 <div class="block2">
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                        <img src="{{ $category->imageUrl }}" alt="{{ $category->name }}"
+                                        <img src="{{ $brand->imageUrl }}" alt="{{ $brand->name }}"
                                              style="width: 270px; height: 180px;">
                                         <div class="block2-overlay trans-0-4">
                                             <div class="block2-btn-addcart w-size1 trans-0-4"></div>
                                         </div>
                                     </div>
                                     <div class="block2-txt p-t-20">
-                                        <a href="{{ route('category.show', $category) }}"
+                                        <a href="{{ route('brand.show', $brand) }}"
                                            class="block2-name dis-block s-text3 p-b-5"
                                            style="text-align: center">
-                                            {{ $category->name }}
+                                            {{ $brand->name }}
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
 					</div>
-				{{ $categories->links('layouts.pagination') }}
+				{{ $brands->links('layouts.pagination') }}
 				</div>
 			</div>
 		</div>

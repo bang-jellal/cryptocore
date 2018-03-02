@@ -46,10 +46,12 @@ class ProductService
      */
     public function update($request, $product)
     {
-        Storage::delete($product->image);
-        $path = $request->file('image')->store($this->path);
+        if ($request->file('image')) {
+            Storage::delete($product->image);
+            $path = $request->file('image')->store($this->path);
+            $product->image = $path;
+        }
 
-        $product->image = $path;
         $product->fill($request->only('name', 'price', 'description', 'published'));
         $product->brand()->associate($request->get('brand_id'));
         $product->subCategory()->associate($request->get('sub_category_id'));

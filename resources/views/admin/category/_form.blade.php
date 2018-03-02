@@ -52,16 +52,6 @@
 
 @push('scripts')
     <script>
-        $('#price').inputmask("numeric", {
-            radixPoint: ".",
-            groupSeparator: ",",
-            digits: 2,
-            autoGroup: true,
-            prefix: '$ ',
-            rightAlign: false,
-            oncleared: function () { self.Value(''); }
-        });
-
         function readURL(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();

@@ -25,6 +25,7 @@ class BrandStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

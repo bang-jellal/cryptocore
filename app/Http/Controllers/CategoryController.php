@@ -10,12 +10,11 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Category $category)
+    public function index()
     {
-        $categories = Category::orderBy('name', 'ASC')
-            ->paginate(15);
+        $categories = Category::orderBy('name', 'ASC')->paginate(15);
 
         return view('category.index', compact('categories'));
     }

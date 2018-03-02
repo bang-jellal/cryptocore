@@ -3,8 +3,14 @@
 @section('content')
     <!-- Title Page -->
     <section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(/template/fashe/images/slide-1.jpg);">
-    <h3 class="l-text2 t-center">
-        List of Product
+    <h3 class="m-text9 t-center">
+        @if (request()->route('brand'))
+            {{ request()->route()->name('brand.show') ? 'List of Product on Brand '.request()->route('brand')->name : '' }}
+        @elseif (request()->route('product'))
+            {{ request()->route()->name('product.show') ? 'List of Product on Product '.request()->route('product')->name : '' }}
+        @else
+            {{ request()->route()->name('product') ? 'List of Product' : '' }}
+        @endif
     </h3>
     <p class="m-text13 t-center">
         All Product
@@ -18,7 +24,14 @@
                 @include('layouts.product.sidebar')
                 <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
 					<div class="flex-sb-m flex-w p-b-35">
-						<div class="flex-w"></div>
+                        <div class="flex-w">
+                            <div class="search-product pos-relative bo4 of-hidden">
+                                <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products...">
+                                <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+                                    <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
 						<span class="s-text8 p-t-5 p-b-5">
 							Showing {{ $products->firstItem() }}–{{ $products->lastItem() }} of {{ $products->total() }} results
 						</span>

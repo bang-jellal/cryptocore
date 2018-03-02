@@ -11,7 +11,7 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -46,12 +46,12 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return view('product.show', compact('product'));
     }
 
     /**

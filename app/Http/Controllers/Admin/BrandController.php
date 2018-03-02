@@ -6,9 +6,21 @@ use App\Models\Brand;
 use App\Http\Requests\Admin\BrandStoreRequest;
 use App\Http\Requests\Admin\BrandUpdateRequest;
 use App\Http\Controllers\Controller;
+use App\Services\BrandService;
+use Illuminate\Support\Facades\Storage;
 
 class BrandController extends Controller
 {
+    public $brand_service;
+
+    /**
+     * ProductController constructor.
+     * @param BrandService $brand_service
+     */
+    public function __construct(BrandService $brand_service)
+    {
+        $this->brand_service = $brand_service;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -38,9 +50,7 @@ class BrandController extends Controller
      */
     public function store(BrandStoreRequest $request)
     {
-        $brand = new Brand();
-        $brand->fill($request->except(['_token']));
-        $brand->save();
+        $this->brand_service->store($request);
 
         return redirect()->route('admin.brand.index')->with('alert', [
             'alert'   => 'success',
@@ -80,8 +90,7 @@ class BrandController extends Controller
      */
     public function update(BrandUpdateRequest $request, Brand $brand)
     {
-        $brand->fill($request->except('_token', '_method'));
-        $brand->save();
+        $this->brand_service->update($request, $brand);
 
         return redirect()->route('admin.brand.index')->with('alert', [
             'alert'   => 'success',
@@ -92,12 +101,14 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Brand $brand
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Brand $brand)
     {
-        Brand::findOrFail($id)->delete();
+        Storage::delete($brand->image);
+        $brand->delete();
 
         return redirect()->route('admin.brand.index')->with('alert', [
             'alert'   => 'success',
