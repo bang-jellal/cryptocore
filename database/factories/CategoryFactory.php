@@ -15,12 +15,12 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\Category::class, function (Faker $faker) {
     return [
-        'name' => $faker->word,
+        'name'  => $faker->sentence($nbWords = 2, $variableNbWords = false),
     ];
 });
 
 $factory->define(App\Models\SubCategory::class, function (Faker $faker) {
     return [
-        'name' => $faker->word,
+        'name' => $faker->sentence($nbWords = 3, $variableNbWords = true),
     ];
 });

@@ -13,7 +13,7 @@
             @foreach ($products as $key => $product)
                 <li class="item">
                     <div class="product-img">
-                        <img src="{{ asset('product_image/'.$product->image) }}" alt="{{ $product->name }}">
+                        <img src="{{ $product->imageUrl }}" alt="{{ $product->name }}">
                     </div>
                     <div class="product-info">
                         <a href="{{ route('admin.product.show', $product) }}" class="product-title">{{ $product->name }}

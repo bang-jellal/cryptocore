@@ -2,24 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Category $category)
+    public function index()
     {
-        dd($category);
-        $products = Product::published()
-            ->orderBy('created_at', 'ASC')
-            ->paginate(20);
-
-        return view('product.index', compact('products'));
+        //
     }
 
     /**

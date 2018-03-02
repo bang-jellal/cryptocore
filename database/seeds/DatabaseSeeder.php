@@ -39,21 +39,26 @@ class DatabaseSeeder extends Seeder
             });
 
         // 3. DATA BRAND
-        $brands = factory(\App\Models\Brand::class)
-            ->times(5)
-            ->create();
+        $brands = factory(\App\Models\Brand::class)->times(5)->create();
 
-        // 3. DATA CATEGORIES
-        $categories = factory(\App\Models\Category::class)
-            ->times(6)
-            ->create()
-            ->each(function ($categories) {
-                $sub_categories = factory(\App\Models\SubCategory::class)
-                    ->times(2)
-                    ->make()
-                    ->each(function ($sub_categories) use ($categories) {
-                        $categories->subCategory()->save($sub_categories);
-                    });
-            });
+        // 4. DATA CATEGORIES
+        $categories = factory(\App\Models\Category::class)->times(6)->create();
+
+        // 5. SUB CATEGORIES
+        $sub_categories = factory(\App\Models\SubCategory::class)->times(10)->make();
+        $sub_categories->each(function($sub_categories) use ($categories) {
+            $category = $categories->random();
+            $sub_categories->category()->associate($category);
+            $sub_categories->save();
+        });
+
+        $product = factory(\App\Models\Product::class)->times(100)->make();
+        $product->each(function($product) use ($brands, $sub_categories) {
+            $brand        = $brands->random();
+            $sub_category = $sub_categories->random();
+            $product->brand()->associate($brand);
+            $product->subCategory()->associate($sub_category);
+            $product->save();
+        });
     }
 }

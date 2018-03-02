@@ -13,8 +13,11 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Models\Brand::class, function (Faker $faker) {
+$factory->define(App\Models\Product::class, function (Faker $faker) {
     return [
-        'name' => $faker->sentence($nbWords = 3, $variableNbWords = true),
+        'name' => $faker->sentence($nbWords = 5, $variableNbWords = true),
+        'price' => $faker->randomNumber(3),
+        'description' => $faker->word,
+        'published' => true,
     ];
 });
