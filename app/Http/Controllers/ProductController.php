@@ -17,7 +17,7 @@ class ProductController extends Controller
     {
         $products = Product::published()
             ->orderBy('created_at', 'ASC')
-            ->paginate(20);
+            ->paginate(15);
 
         return view('product.index', compact('products'));
     }

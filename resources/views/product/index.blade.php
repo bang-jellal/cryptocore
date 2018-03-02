@@ -3,11 +3,11 @@
 @section('content')
     <!-- Title Page -->
     <section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url(/template/fashe/images/slide-1.jpg);">
-    <h2 class="l-text2 t-center">
-        Product
-    </h2>
+    <h3 class="l-text2 t-center">
+        List of Product
+    </h3>
     <p class="m-text13 t-center">
-        All Product 2018
+        All Product
     </p>
     </section>
   

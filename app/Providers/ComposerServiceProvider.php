@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\ViewComposers\BrandComposer;
 use App\ViewComposers\CategoryComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -15,6 +16,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer(['layouts.product.sidebar'], BrandComposer::class);
         View::composer(['layouts.product.sidebar'], CategoryComposer::class);
     }
 

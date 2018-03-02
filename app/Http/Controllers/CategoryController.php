@@ -14,12 +14,10 @@ class CategoryController extends Controller
      */
     public function index(Category $category)
     {
-        dd($category);
-        $products = Product::published()
-            ->orderBy('created_at', 'ASC')
-            ->paginate(20);
+        $categories = Category::orderBy('name', 'ASC')
+            ->paginate(15);
 
-        return view('product.index', compact('products'));
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -49,9 +47,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        $products = $category->product()->paginate(15);
+
+        return view('product.index', compact('products'));
     }
 
     /**

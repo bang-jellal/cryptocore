@@ -29,4 +29,12 @@ class Category extends Model
     {
         return $this->hasMany(SubCategory::class);
     }
+
+    /**
+     * Get all of the posts for the country.
+     */
+    public function product()
+    {
+        return $this->hasManyThrough(Product::class, SubCategory::class);
+    }
 }
