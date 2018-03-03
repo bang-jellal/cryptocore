@@ -42,7 +42,6 @@
     {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     <!-- Header Scripts -->
     @stack('header_script')
-
 </head>
 <body class="animsition">
         <!-- Header -->
@@ -108,6 +107,5 @@
     {{--<script src="{{ asset('js/app.js') }}"></script>--}}
     <!-- Footer Scripts -->
     @stack('footer_script')
-
 </body>
 </html>

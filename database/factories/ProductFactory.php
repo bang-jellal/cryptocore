@@ -17,7 +17,7 @@ $factory->define(App\Models\Product::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence($nbWords = 5, $variableNbWords = true),
         'price' => $faker->randomNumber(3),
-        'description' => $faker->word,
+        'description' => $faker->text($maxNbChars = 500),
         'published' => true,
     ];
 });

@@ -7,11 +7,15 @@
                 Free shipping for standard order over $100
             </span>
             <div class="topbar-child2">
-                <span class="topbar-email">
+                <span class="topbar-email header-wrapicon1 dis-block">
                     @guest
+                        <img src="{{ asset('template/fashe/images/icons/icon-header-01.png') }}"
+                             class="header-icon1" alt="ICON">&ensp;
                         fashe@example.com
                     @else
-                        {{ Auth::user()->email }}
+                        <img src="{{ Auth::user()->avatar }}" class="header-icon1" alt="ICON"
+                             style="border-radius: 50%">&ensp;
+                        {{ Auth::user()->name }}
                     @endguest
                 </span>
             </div>
@@ -28,20 +32,20 @@
                 </nav>
             </div>
             <div class="header-icons">
+                @include('layouts._header')
+                <span class="linedivide1"></span>
                 @guest
                     <a href="{{ route('login') }}" class="header-wrapicon1 dis-block">
-                        <img src="{{ asset('template/fashe/images/icons/icon-header-01.png') }}"
-                             class="header-icon1" alt="ICON">
+                        Login
                     </a>
                 @else
-                    <a href="#" class="header-wrapicon1 dis-block">
-                        <img src="{{ Auth::user()->avatar }}" class="header-icon1" alt="ICON"
-                             style="border-radius: 50%">
+                    <a href="#" class="header-wrapicon1 dis-block" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        Logout
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 @endguest
-
-                <span class="linedivide1"></span>
-                @include('layouts._header')
             </div>
         </div>
     </div>
@@ -53,19 +57,20 @@
         </a>
         <div class="btn-show-menu">
             <div class="header-icons-mobile">
+                @include('layouts._header')
+                <span class="linedivide2"></span>
                 @guest
-                    <a href="#" class="header-wrapicon1 dis-block">
-                        <img src="{{ route('login') }}" class="header-icon1" alt="ICON">
+                    <a href="{{ route('login') }}" class="header-wrapicon1 dis-block">
+                        Login
                     </a>
                 @else
-                    <a href="#" class="header-wrapicon1 dis-block">
-                        <img src="{{ Auth::user()->avatar }}" class="header-icon1" alt="ICON"
-                             style="border-radius: 50%">
+                    <a href="#" class="header-wrapicon1 dis-block" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        Logout
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
                 @endguest
-
-                <span class="linedivide2"></span>
-                @include('layouts._header')
             </div>
             <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
                 <span class="hamburger-box">
@@ -79,6 +84,21 @@
     <div class="wrap-side-menu">
         <nav class="side-menu">
             <ul class="main-menu">
+                <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+                    <div class="topbar-child2-mobile">
+                        <span class="topbar-email header-wrapicon1 dis-block">
+                             @guest
+                                <img src="{{ asset('template/fashe/images/icons/icon-header-01.png') }}"
+                                     class="header-icon1" alt="ICON">&ensp;
+                                fashe@example.com
+                            @else
+                                <img src="{{ Auth::user()->avatar }}" class="header-icon1" alt="ICON"
+                                     style="border-radius: 50%">&ensp;
+                                {{ Auth::user()->name }}
+                            @endguest
+                        </span>
+                    </div>
+                </li>
                 <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
                     <span class="topbar-child1">
                         Free shipping for standard order over $100

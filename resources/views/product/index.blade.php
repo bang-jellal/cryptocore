@@ -44,7 +44,7 @@
                                 <div class="block2">
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
                                         <img src="{{ $product->imageUrl }}" alt="{{ $product->name }}"
-                                             style="width: 270px; height: 180px;">
+                                             style="height: 339px;">
                                         <div class="block2-overlay trans-0-4">
                                             <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
                                                 <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
