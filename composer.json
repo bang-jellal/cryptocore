@@ -14,7 +14,8 @@
         "league/flysystem-rackspace": "^1.0",
         "nasyrov/laravel-enums": "^1.1",
         "watson/active": "^2.0",
-        "yajra/laravel-datatables": "1.0"
+        "yajra/laravel-datatables": "1.0",
+        "yohang88/letter-avatar": "^1.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

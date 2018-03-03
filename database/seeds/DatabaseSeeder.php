@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
 
         // 2. DATA USERS
         $admin = \App\Models\User::create([
-            'name'           => 'Admin',
+            'name'           => 'Admin Cryptocore',
             'email'          => 'admin@mail.com',
             'password'       => 'secret',
             'remember_token' => str_random(10),

@@ -83,8 +83,6 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $contents = Storage::get($product->image);
-
         $brands         = Brand::pluck('name', 'id');
         $sub_categories = SubCategory::pluck('name', 'id');
 

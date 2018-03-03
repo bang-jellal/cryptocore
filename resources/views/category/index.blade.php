@@ -38,7 +38,7 @@
                                 <div class="block2">
                                     <div class="block2-img wrap-pic-w of-hidden pos-relative">
                                         <img src="{{ $category->imageUrl }}" alt="{{ $category->name }}"
-                                             style="width: 270px; height: 180px;">
+                                             style="height: 339px;">
                                         <div class="block2-overlay trans-0-4">
                                             <div class="block2-btn-addcart w-size1 trans-0-4"></div>
                                         </div>

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use YoHang88\LetterAvatar\LetterAvatar;
 
 class User extends Authenticatable
 {
@@ -38,6 +39,16 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
+    }
+
+    /**
+     * Get the product image attribute.
+     *
+     * @return string
+     */
+    public function getAvatarAttribute()
+    {
+        return new LetterAvatar($this->attributes['name'], 'square', 48);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Enums\ImageEnum;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 class ProductService
 {
