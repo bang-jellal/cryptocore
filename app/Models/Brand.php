@@ -7,10 +7,15 @@ use Illuminate\Support\Facades\Storage;
 
 class Brand extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = ['name'];
 
     /**
-     * Get the product image attribute.
+     * Get the brand's image.
      *
      * @return string
      */
@@ -25,6 +30,9 @@ class Brand extends Model
         return asset('template/fashe/images/banner-05.jpg');
     }
 
+    /**
+     * Get the product for the brand.
+     */
     public function product()
     {
         return $this->hasMany(Product::class);

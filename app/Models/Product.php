@@ -17,13 +17,19 @@ class Product extends Model
         'name', 'price', 'description', 'published'
     ];
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
     protected $casts = [
         'published' => 'boolean',
     ];
 
     /**
-     * Get the product price attribute.
+     * Get the product's price.
      *
+     * @param  string $value
      * @return string
      */
     public function getPriceAttribute($value)
@@ -32,7 +38,7 @@ class Product extends Model
     }
 
     /**
-     * Get the product image attribute.
+     * Get the product's image.
      *
      * @return string
      */
@@ -47,23 +53,49 @@ class Product extends Model
         return asset('template/fashe/images/banner-05.jpg');
     }
 
+    /**
+     * Set the product's price.
+     *
+     * @param  string $value
+     * @return void
+     */
     public function setPriceAttribute($value)
     {
         $this->attributes['price'] = currency_dollar_to_int($value);
     }
 
+    /**
+     * Scope a query to only include published product.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public function scopePublished(Builder $query)
     {
         return $query->where('published', true);
     }
 
+    /**
+     * Get the brand that owns the product.
+     */
     public function brand()
     {
         return $this->belongsTo(Brand::class);
     }
 
+    /**
+     * Get the sub category that owns the product.
+     */
     public function subCategory()
     {
         return $this->belongsTo(SubCategory::class);
+    }
+
+    /**
+     * Get the product images for the product.
+     */
+    public function productImages()
+    {
+        return $this->hasMany(SubCategory::class);
     }
 }

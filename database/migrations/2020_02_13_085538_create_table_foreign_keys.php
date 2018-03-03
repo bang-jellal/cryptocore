@@ -25,6 +25,10 @@ class CreateTableForeignKeys extends Migration
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('CASCADE');
             $table->foreign('sub_category_id')->references('id')->on('brands')->onDelete('CASCADE');
         });
+
+        Schema::table('product_images', function (Blueprint $table) {
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('CASCADE');
+        });
     }
 
     /**

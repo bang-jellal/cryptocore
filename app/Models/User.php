@@ -21,6 +21,7 @@ class User extends Authenticatable
     ];
 
     protected $dates = ['created_at'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -33,7 +34,7 @@ class User extends Authenticatable
     /**
      * Set the user's password.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return void
      */
     public function setPasswordAttribute($value)

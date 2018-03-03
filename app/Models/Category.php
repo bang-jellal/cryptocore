@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Storage;
 
 class Category extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = ['name'];
 
     /**
@@ -25,13 +30,16 @@ class Category extends Model
         return asset('template/fashe/images/banner-05.jpg');
     }
 
+    /**
+     * Get the sub category for the category.
+     */
     public function subCategory()
     {
         return $this->hasMany(SubCategory::class);
     }
 
     /**
-     * Get all of the posts for the country.
+     * Get all of the product for the category.
      */
     public function product()
     {
